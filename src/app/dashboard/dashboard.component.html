@@ -1,0 +1,39 @@
+<div>
+    <h1 class="title">Select YAML file to visualise it</h1>
+    <button type="submit" class="btn btn-danger lgbutton" (click)="logout()">LogOut</button>
+</div>
+<div class="mb-3 file_file">
+
+    <form ngNativeValidate>
+        <input class="form-control file" type="file" id="formFile" (change)="handleFileInput1($event)" accept=".yaml"
+            required>
+        <button type="submit" class="btn btn-primary msubmit_btn" (click)="handleFileInput()">Submit</button>
+    </form>
+
+</div>
+<div style="padding:0px 50px;">
+    <div class="containerClass" id='pati'>
+        <div class="ab" style="width: fit-content; float: left;padding-right: 800px;">
+
+            <div *ngFor="let x of key" (click)=makedecision(x.id)>
+                <div class="treeNode" [attr.id]="x.id" [ngStyle]="styleObject(x.id)" ng-scrollbars="dir">
+                    {{x.name}}
+                </div>
+                <svg [style.visibility]="x.show?'visible':'hidden'" class="svg">
+                    <line [attr.id]="x.id+'_'+x.id" class="line"></line>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+    <div class="containerClass1">
+        <ul>
+            <table>
+                <tr *ngFor="let x of dataIds">
+                    <th style="color: #02d65e;"> {{x}} </th>
+                    <th> {{data[x]}} </th>
+                </tr>
+            </table>
+        </ul>
+    </div>
+</div>
